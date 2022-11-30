@@ -21,24 +21,41 @@ tests/test1.in test1.out
 а зачем сравниваем со значением cat tests/test1.out
 
 7) были произведены изменения с удалением "бесполезных участков кода"
-Например, в функции F я заменил строчки 
-        subsd   xmm0, xmm1                      # xmm0 -= 4
-        movq    rax, xmm0                       # rax := xmm0
-        movq    xmm0, rax                       # xmm0 := rax
-на строчки 
-	subsd   xmm0, xmm1                      # xmm0 -= 4
-        movq    xmm0, rax                       # xmm0 := rax
 
+Например, в функции F я заменил строчки 
+
+        subsd   xmm0, xmm1                      # xmm0 -= 4
+	
+        movq    rax, xmm0                       # rax := xmm0
+	
+        movq    xmm0, rax                       # xmm0 := rax
+	
+на строчки 
+
+	subsd   xmm0, xmm1                      # xmm0 -= 4
+	
+        movq    xmm0, rax                       # xmm0 := rax
+	
 а в FindRoot: я заменил 
+
         movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
+	
         movsd   QWORD PTR -32[rbp], xmm0        # a := xmm0
+	
 на 	
+
 	movsd   QWORD PTR -32[rbp], QWORD PTR -8[rbp]   # a := с
+	
 а также 
+
         movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
+	
         movsd   QWORD PTR -40[rbp], xmm0        # b := xmm0
+	
 на
+
 	movsd   QWORD PTR -32[rbp], QWORD PTR -8[rbp]   # a := с
+	
 
 8) в программе использованы локальные и глобальные переменные, строки, числа с плавающей точкой, а так же функции для работы с ними.
 9) добавлены комментарии описывающие связь между параметрами языка си и регистрами.
