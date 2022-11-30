@@ -34,13 +34,13 @@ tests/test1.in test1.out
 
 	subsd   xmm0, xmm1                      # xmm0 -= 4
 	
-        movq    xmm0, rax                       # xmm0 := rax
+	movq    xmm0, rax                       # xmm0 := rax
 	
 а в FindRoot: я заменил 
 
-        movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
+	movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
 	
-        movsd   QWORD PTR -32[rbp], xmm0        # a := xmm0
+	movsd   QWORD PTR -32[rbp], xmm0        # a := xmm0
 	
 на 	
 
@@ -48,9 +48,9 @@ tests/test1.in test1.out
 	
 а также 
 
-        movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
+	movsd   xmm0, QWORD PTR -8[rbp]         # xmm0 := c
 	
-        movsd   QWORD PTR -40[rbp], xmm0        # b := xmm0
+	movsd   QWORD PTR -40[rbp], xmm0        # b := xmm0
 	
 на
 
